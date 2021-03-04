@@ -1,22 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+// 导入路由模块
+import Index from '../views/Index.vue'
+import Crossborder from '../views/Crossborder.vue'
+import Women from '../views/Women.vue'
+import Men from '../views/Men.vue'
+import Cosmetics from '../views/Cosmetics.vue'
+import Lifestyle from '../views/Lifestyle.vue'
+import Kids from '../views/Kids.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/index',
+    component: Index
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/crossborder',
+    component: Crossborder
+  },
+  {
+    path: '/women',
+    component: Women
+  },
+  {
+    path: '/men',
+    component: Men
+  },
+  {
+    path: '/cosmetics',
+    component: Cosmetics
+  },
+  {
+    path: '/lifestyle',
+    component: Lifestyle
+  },
+  {
+    path: '/kids',
+    component: Kids
+  },
+  {
+    path: '*',
+    redirect: '/index' // 重定向
   }
 ]
 
