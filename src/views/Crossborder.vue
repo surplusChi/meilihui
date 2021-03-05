@@ -1,7 +1,7 @@
 <template>
   <div id="crossborder">
     <ul>
-      <li v-for="data in crossborderList" :key="data.categoryId">
+      <li v-for="data in crossborderList" :key="data.categoryId" @click="handleClick(data.categoryId)">
         <img :src="data.imageUrl" alt="">
         <div class="event-base">
           <span id="haiwai">海外直发</span>
@@ -16,13 +16,24 @@
 
 <script>
 import http from '@/util/http.js'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
       crossborderList: ''
     }
   },
+  methods: {
+    // 解构 vuex里的控制tabbar的显示的方法
+    ...mapMutations('TabbarModule', ['Hide']),
+    // 点击跳转到产品列表页
+    handleClick (categoryId) {
+      this.$router.push(`/productlist/${categoryId}`)
+    }
+  },
   mounted () {
+    // 进入页面，将顶部选项栏显示出来
+    this.Hide()
     http({
       url: '/silo/eventForH5?categoryId=crossborder&pageIndex=1&timestamp=1614847860529&summary=c88be1eeb2f44afd896913eaeeffb50e&platform_code=H5'
     }).then(res => {

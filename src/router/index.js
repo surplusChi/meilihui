@@ -9,6 +9,7 @@ import Men from '../views/Men.vue'
 import Cosmetics from '../views/Cosmetics.vue'
 import Lifestyle from '../views/Lifestyle.vue'
 import Kids from '../views/Kids.vue'
+import ProductList from '../views/productlist/ProductList.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,10 @@ const routes = [
   {
     path: '/kids',
     component: Kids
+  },
+  {
+    path: '/productlist/:categoryId', // 传入产品id，做成动态路由
+    component: ProductList // 产品列表页路由
   },
   {
     path: '*',

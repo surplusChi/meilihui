@@ -1,7 +1,7 @@
 <template>
-  <div id="crossborder">
+  <div id="men">
     <ul>
-      <li v-for="data in menList" :key="data.categoryId">
+      <li v-for="data in cosmeticsList" :key="data.categoryId" @click="handleClick(data.categoryId)">
         <img :src="data.imageUrl" alt="">
         <div class="event-base">
           <span id="span1">{{data.englishName}}</span>
@@ -15,24 +15,35 @@
 
 <script>
 import http from '@/util/http.js'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      menList: ''
+      cosmeticsList: ''
+    }
+  },
+  methods: {
+    // 解构 vuex里的控制tabbar的显示的方法
+    ...mapMutations('TabbarModule', ['Hide']),
+    // 点击跳转到产品列表页
+    handleClick (categoryId) {
+      this.$router.push(`/productlist/${categoryId}`)
     }
   },
   mounted () {
+    // 进入页面，将顶部选项栏显示出来
+    this.Hide()
     http({
-      url: '/silo/eventForH5?categoryId=men&pageIndex=1&timestamp=1614855643337&summary=19c2cc3d0d7087e780e2e6b8f54fc90c&platform_code=H5'
+      url: '/silo/eventForH5?categoryId=men&pageIndex=1&timestamp=1614847860529&summary=c88be1eeb2f44afd896913eaeeffb50e&platform_code=H5'
     }).then(res => {
-      this.menList = res.data.eventList
-      // console.log(this.menList)
+      this.cosmeticsList = res.data.eventList
+      // console.log(this.cosmeticsList)
     })
   }
 }
 </script>
 <style lang="scss" scoped>
-   #crossborder {
+   #men {
     margin: 2rem 1rem 0;
     ul {
       width: 23.9rem;
