@@ -1,47 +1,53 @@
 <template>
   <div>
-    <div class="topMenuBar">
-      <div class="topbar">
-        <div class="back" @click="hangleBack">
-          <svg t="1614918495514" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2896" width="200" height="200"><path d="M874.666667 480H224L514.133333 170.666667c12.8-12.8 10.666667-34.133333-2.133333-44.8s-32-10.666667-44.8 2.133333l-341.333333 362.666667c-2.133333 2.133333-4.266667 6.4-6.4 8.533333-2.133333 4.266667-2.133333 6.4-2.133334 10.666667s0 8.533333 2.133334 10.666666c2.133333 4.266667 4.266667 6.4 6.4 8.533334l341.333333 362.666666c6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333 12.8-12.8 12.8-32 2.133333-44.8L224 544H874.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z" p-id="2897"></path></svg>
-        </div>
-        <div class="title">
-        {{list.eventName}}
-        </div>
-        <div class="right">
-          <svg t="1614918541854" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" width="200" height="200"><path d="M298.666667 586.666667a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z m213.333333 0a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z m213.333333 0a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z" p-id="2671"></path></svg>
-        </div>
-      </div>
-      <div class="menu">
-        <ul>
-          <li @click="handleClick1" :class="isActive === 'active1' ? 'active' : '' ">人气</li>
-          <li @click="handleClick2" :class="isActive === 'active2' ? 'active' : '' ">折扣</li>
-          <li @click="handleClick3" :class="isActive === 'active3' ? 'active' : '' ">价格</li>
-          <li>筛选</li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="pitem">
-        <div class="product-item" v-for="itme in list.products" :key="itme.productId">
-          <div class="pic">
-            <img :src="itme.imageUrl" alt="">
+    <div v-show="isProductShow">
+      <div class="topMenuBar">
+        <div class="topbar">
+          <div class="back" @click="hangleBack">
+            <svg t="1614918495514" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2896" width="200" height="200"><path d="M874.666667 480H224L514.133333 170.666667c12.8-12.8 10.666667-34.133333-2.133333-44.8s-32-10.666667-44.8 2.133333l-341.333333 362.666667c-2.133333 2.133333-4.266667 6.4-6.4 8.533333-2.133333 4.266667-2.133333 6.4-2.133334 10.666667s0 8.533333 2.133334 10.666666c2.133333 4.266667 4.266667 6.4 6.4 8.533334l341.333333 362.666666c6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333 12.8-12.8 12.8-32 2.133333-44.8L224 544H874.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z" p-id="2897"></path></svg>
           </div>
-          <div class="product">
-            <div class="product-icon">当季新品</div>
-            <div class="product-info">
-              <span>{{itme.brandName}} </span>
-              <span id="span1">{{itme.productName}}</span>
-            </div>
-            <div class="product-price-box">
-              <span id="price">￥{{itme.price}}</span>
-              <del id="marketPrice">￥{{itme.marketPrice}}</del>
-              <span id="discount">{{itme.discount}}折</span>
-            </div>
+          <div class="title">
+          {{list.eventName}}
+          </div>
+          <div class="right">
+            <svg t="1614918541854" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" width="200" height="200"><path d="M298.666667 586.666667a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z m213.333333 0a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z m213.333333 0a74.666667 74.666667 0 1 1 0-149.333334 74.666667 74.666667 0 0 1 0 149.333334z" p-id="2671"></path></svg>
           </div>
         </div>
+        <div class="menu">
+          <ul>
+            <li @click="handleClick1" :class="isActive === 'active1' ? 'active' : '' ">人气</li>
+            <li @click="handleClick2" :class="isActive === 'active2' ? 'active' : '' ">折扣</li>
+            <li @click="handleClick3" :class="isActive === 'active3' ? 'active' : '' ">价格</li>
+            <li>筛选</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="pitem">
+          <div class="product-item" v-for="itme in list.products" :key="itme.productId" @click="handlePush(itme.productId)">
+            <div class="pic">
+              <img :src="itme.imageUrl" alt="">
+            </div>
+            <div class="product">
+              <div class="product-icon">当季新品</div>
+              <div class="product-info">
+                <span>{{itme.brandName}} </span>
+                <span id="span1">{{itme.productName}}</span>
+              </div>
+              <div class="product-price-box">
+                <span id="price">￥{{itme.price}}</span>
+                <del id="marketPrice">￥{{itme.marketPrice}}</del>
+                <span id="discount">{{itme.discount}}折</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- 二级路由容器 -->
+    <section>
+      <router-view></router-view>
+    </section>
   </div>
 </template>
 <script>
@@ -57,7 +63,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('ProductListModule', ['list'])
+    ...mapState('ProductListModule', ['list']),
+    ...mapState('DetailModule', ['isProductShow'])
   },
   mounted () {
     this.id = this.$route.params.categoryId
@@ -65,10 +72,14 @@ export default {
     this.getList([this.id, ''])
     // 进入产品列表页面，隐藏顶部tabbar
     this.Show()
+    // 进入产品列表页，显示产品列表页
+    // this.ProductHide()
   },
   methods: {
     // 解构 vuex里的控制tabbar的公共状态和方法
     ...mapMutations('TabbarModule', ['Show', 'Hide']),
+    // 解构控制product页面显示的方法
+    ...mapMutations('DetailModule', ['ProductHide']),
     // 解构清除list的方法
     ...mapMutations('ProductListModule', ['clearList']),
     // 解构异步请求数据的方法
@@ -81,19 +92,26 @@ export default {
       // 离开产品列表页面，就将list数据清空
       this.clearList()
     },
+    // 点击跳转到详情页
+    handlePush (productId) {
+      this.$router.push(`/productlist/${this.id}/detail/${productId}`)
+    },
     handleClick1 () {
       // 点击请求数据
       this.getList([this.id, this.sort1])
+      // 点击高亮样式切换
       this.isActive = 'active1'
     },
     handleClick2 () {
       // 点击请求数据
       this.getList([this.id, this.sort2])
+      // 点击高亮样式切换
       this.isActive = 'active2'
     },
     handleClick3 () {
       // 点击请求数据
       this.getList([this.id, this.sort3])
+      // 点击高亮样式切换
       this.isActive = 'active3'
     }
   },
