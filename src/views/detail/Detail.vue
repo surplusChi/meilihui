@@ -14,7 +14,7 @@
     </div>
     <div class="cont">
       <detail-swiper>
-        <div class="swiper-slide" v-for="data in detailList.images && detailList.images" :key="data.bigImgUrl">
+        <div class="swiper-slide" v-for="data in detailList.images" :key="data.bigImgUrl">
           <img :src="data.smallImgUrl" alt="">
         </div>
       </detail-swiper>
@@ -58,7 +58,7 @@
           </div>
         </section>
       </div>
-      <div class="block-desc1">
+      <div class="block-desc">
         <h3>商品参数</h3>
         <div class="block-info" v-if="isShow">
           <div class="show-more">
@@ -71,6 +71,65 @@
             </ul>
           </div>
         </div>
+      </div>
+      <div class="block-desc">
+        <h3>商品详情</h3>
+        <div class="block-info">
+          <div class="content">{{detailList && detailList.description.design}}</div>
+          <div class="pic">
+            <img
+            v-for="data in detailList && detailList.description.product_img1"
+            :key="data.bigImgUrl" :src="data.bigImgUrl" alt="">
+          </div>
+          <p class="tip">{{detailList && detailList.description.message}}</p>
+        </div>
+      </div>
+      <div class="block-desc" v-if="isShow1">
+        <h3>洗护与保养</h3>
+        <div class="block-info">
+          <p class="maintenance">{{detailList && detailList.description.maintenanceList[0]}}</p>
+        </div>
+      </div>
+      <div class="block-desc">
+        <h3>包装清单</h3>
+        <div class="block-info">
+          <img class="img1" :src="detailList.packageURL" alt="">
+          <p class="tip">{{detailList && detailList.packageText}}</p>
+        </div>
+      </div>
+      <div class="block-desc">
+        <h3>{{detailList && detailList.brandName}}</h3>
+        <div class="span1">品牌主页> </div>
+      </div>
+      <div class="block-desc" v-if="isShow2">
+        <h3>GATEONE</h3>
+        <div class="block-info">
+          <img class="img1" :src="detailList.brandImg" alt="">
+        </div>
+      </div>
+      <div class="block-desc" v-if="isShow3">
+        <div class="block-info">
+          <img class="img1" :src="detailList.postSellUrls[0]" alt="">
+        </div>
+      </div>
+      <div class="block-desc">
+        <div class="block-info">
+          <img class="img1" :src="detailList.postSellUrl" alt="">
+        </div>
+      </div>
+      <div class="block-desc">
+        <h3>用户评论(0)</h3>
+        <div class="span1">查看全部> </div>
+      </div>
+    </div>
+    <div class="car-bottom-bar">
+      <div class="left-area" @click="handleCart">
+        <svg t="1614832519323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1078" width="200" height="200"><path d="M912.695652 1024H111.304348a111.304348 111.304348 0 0 1-111.304348-111.304348V111.304348a111.304348 111.304348 0 0 1 111.304348-111.304348h801.391304a111.304348 111.304348 0 0 1 111.304348 111.304348v801.391304a111.304348 111.304348 0 0 1-111.304348 111.304348zM111.304348 44.521739a66.782609 66.782609 0 0 0-66.782609 66.782609v801.391304a66.782609 66.782609 0 0 0 66.782609 66.782609h801.391304a66.782609 66.782609 0 0 0 66.782609-66.782609V111.304348a66.782609 66.782609 0 0 0-66.782609-66.782609z" fill="#666666" p-id="1079"></path><path d="M756.869565 270.692174m-44.521739 0a44.521739 44.521739 0 1 0 89.043478 0 44.521739 44.521739 0 1 0-89.043478 0Z" fill="#666666" p-id="1080"></path><path d="M756.869565 326.121739a55.652174 55.652174 0 1 1 33.168696-99.283478 54.761739 54.761739 0 0 1 22.260869 36.730435 54.53913 54.53913 0 0 1-10.462608 41.182608 55.206957 55.206957 0 0 1-36.507826 22.26087 49.641739 49.641739 0 0 1-8.459131-0.890435z m0-89.043478h-4.897391a33.836522 33.836522 0 0 0-28.716522 38.288696 33.391304 33.391304 0 0 0 59.881739 15.137391 32.723478 32.723478 0 0 0 6.90087-24.709565 32.50087 32.50087 0 0 0-12.911304-22.26087 34.949565 34.949565 0 0 0-20.257392-6.455652z" fill="#666666" p-id="1081"></path><path d="M257.335652 270.692174m-44.521739 0a44.521739 44.521739 0 1 0 89.043478 0 44.521739 44.521739 0 1 0-89.043478 0Z" fill="#666666" p-id="1082"></path><path d="M257.335652 326.121739a55.652174 55.652174 0 1 1 55.652174-55.652174 55.652174 55.652174 0 0 1-55.652174 55.652174z m0-89.043478a33.391304 33.391304 0 1 0 33.391305 33.391304 33.391304 33.391304 0 0 0-33.391305-33.391304z" fill="#666666" p-id="1083"></path><path d="M512 572.549565a277.147826 277.147826 0 0 1-276.925217-276.925217 22.26087 22.26087 0 1 1 44.521739 0 232.403478 232.403478 0 0 0 464.806956 0 22.26087 22.26087 0 0 1 44.521739 0A277.147826 277.147826 0 0 1 512 572.549565z" fill="#666666" p-id="1084"></path></svg>
+        <span class="btn-text">购物袋</span>
+      </div>
+      <div class="submit-btn">
+        <span class="add-to-cart" @click="handleCart">加入购物车</span>
+        <span class="add-to-checkout" @click="handleLogin">立即购买</span>
       </div>
     </div>
   </div>
@@ -96,7 +155,13 @@ export default {
       // 详情页数据
       detailList: '',
       // 控制商品参数显示隐藏
-      isShow: false
+      isShow: false,
+      // 控制洗护与保养显示隐藏
+      isShow1: false,
+      // 控制GATEONE显示隐藏
+      isShow2: false,
+      // 控制postSellUrls显示隐藏
+      isShow3: false
     }
   },
   components: {
@@ -109,6 +174,12 @@ export default {
       this.$router.back()
       // 点击显示产品列表页
       this.ProductHide()
+    },
+    handleCart () {
+      this.$router.push('/shoppingcart')
+    },
+    handleLogin () {
+      this.$router.push('/login')
     }
   },
   mounted () {
@@ -128,8 +199,31 @@ export default {
       } else {
         this.isShow = true
       }
+      // 判断洗护与保养的数据是否为空，来进行显示隐藏洗护与保养模块
+      if (this.detailList.description.maintenanceList.length === 0) {
+        this.isShow1 = false
+      } else {
+        this.isShow1 = true
+      }
+      // 判断GATEONE的数据是否为空，来进行显示隐藏GATEONE模块
+      if (this.detailList.brandImg === '') {
+        this.isShow2 = false
+      } else {
+        this.isShow2 = true
+      }
+      // 判断postSellUrls的数据是否为空，来进行显示隐藏postSellUrls模块
+      if (this.detailList.postSellUrl.length === 0) {
+        this.isShow3 = false
+      } else {
+        this.isShow3 = true
+      }
     })
+  },
+  beforeDestroy () {
+    // 详情页销毁之前，显示列表页
+    this.ProductHide()
   }
+
 }
 </script>
 <style lang="scss" scoped>
@@ -140,6 +234,10 @@ export default {
     }
   }
   .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -177,7 +275,9 @@ export default {
   }
   .cont {
     position: relative;
+    top: 3.1rem;
     padding: 0 1.533333rem 1.66666667rem;
+    margin-bottom: 4rem;
     .product-base {
       width: 100%;
       padding-bottom: 1rem;
@@ -250,10 +350,10 @@ export default {
         padding: 1.4rem 0 .9rem;
         overflow: hidden;
         #label_title {
-          float: left;
           padding-left: 1.2rem;
           font-size: .5rem;
           span {
+            float: left;
             padding-right: 1rem;
           }
         }
@@ -280,19 +380,26 @@ export default {
         }
       }
     }
-    .block-desc1 {
+    .block-desc {
+      position: relative;
       width: 100%;
       height: auto;
       border-bottom: .1rem solid #f5f5f5;
       h3 {
         padding: 1.5rem 0 1.4rem;
         color:#000;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         text-align: left;
+      }
+      .span1 {
+        position: absolute;
+        right: 0;
+        top: 2.6rem;
+        color:#666;
+        font-size: 1.1rem;
       }
       .block-info {
         width: 100%;
-        height: 26.8rem;
         .show-more {
           width: 100%;
           img {
@@ -319,10 +426,80 @@ export default {
             }
           }
         }
+        .content {
+          width: 100%;
+          padding-bottom: .4rem;
+          color: #000;
+          text-align: left;
+        }
+        .pic {
+          width: 100%;
+          img {
+            width: 100%;
+            /* margin-bottom: .8rem; */
+          }
+        }
+        .tip {
+          font-size: .6rem;
+          text-align: left;
+          padding-bottom: 1rem;
+        }
+        .maintenance {
+          font-size: .8rem;
+          padding-bottom: 1rem;
+          text-align: left;
+        }
+        .img1 {
+          width: 100%;
+          margin-bottom: 1.2rem;
+        }
       }
     }
-    /* .block-desc2 {
-
-    } */
+  }
+  .car-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 3.5rem;
+    z-index: 99;
+    .left-area {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      height: 100%;
+      font-size: .9rem;
+      border: .1rem solid #f5f5f5;
+      svg {
+        padding-left: 1.6rem;
+        padding-top: .7rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    .submit-btn {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      span {
+        width: 50%;
+        height: 100%;
+        line-height: 3.5rem;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: .1rem solid #f5f5f5;
+      }
+      .add-to-cart {
+        color: #000;
+      }
+      .add-to-checkout {
+        color: red;
+      }
+    }
   }
 </style>

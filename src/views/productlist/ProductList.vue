@@ -122,6 +122,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  .topMenuBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+  }
   .topbar {
     display: flex;
     justify-content: flex-start;
@@ -171,7 +177,7 @@ export default {
   }
   .pitem {
     overflow: hidden;
-    margin: 1rem 1rem 0;
+    margin: 6.2rem 1rem 0;
     width: 24rem;
     .product-item {
       float: left;

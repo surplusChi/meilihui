@@ -2,9 +2,6 @@
   <div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <!-- <div class="swiper-slide" v-for="data in img" :key="data.bigImgUrl">
-          <img :src="data.smallImgUrl" alt="">
-        </div> -->
          <slot></slot>
       </div>
       <!-- Add Pagination  bigImgUrl-->
@@ -16,15 +13,11 @@
 import Swiper from 'swiper/bundle' // 这只引入了swiper.js文件
 import 'swiper/swiper-bundle.min.css'
 export default {
-  // props: ['images'],
-  // computed: {
-  //   img () {
-  //     return this.images
-  //   }
-  // },
+  props: {
+  },
   mounted () {
-    this.$nextTick(() => {
-      // console.log(0)
+    setTimeout(() => {
+      // 定时器 一秒后初始化swpier
       // eslint-disable-next-line no-new
       new Swiper('.swiper-container', {
         pagination: {
@@ -33,7 +26,7 @@ export default {
         autoplay: true,
         delay: 7000
       })
-    })
+    }, 1000)
   }
 }
 </script>
@@ -42,11 +35,5 @@ export default {
   .swiper-container {
     height: 21.93333rem;
     width: 100%;
-    /* .swiper-slide {
-      width: 100%;
-      img {
-        width: 100%;
-      }
-    } */
   }
 </style>
